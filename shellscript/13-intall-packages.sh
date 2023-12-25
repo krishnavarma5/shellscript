@@ -14,9 +14,9 @@ echo "script started executing at $TIMESSTAMP" &>> $LOGFILE
 VALIDATE(){ 
    if [$1 -ne o]
    then 
-    echo -e "$2 ... $R FAILED $N"
+       echo -e "$2 ... $R FAILED $N"
     else 
-    echo -e "$2 ... $G SUCCESS $N"
+        echo -e "$2 ... $G SUCCESS $N"
     fi
    }
 
@@ -30,6 +30,7 @@ fi #fi means reverse of if, indicating condition end
 
 #echo "All arguments passed: $@"
 # git mysql postfix net-tools
+#package=git for first time
 
 for package in $@ 
 do
@@ -39,7 +40,7 @@ do
       yum install $package -y &>> $LOGFILE # install the package
       VALIDATE $? "installation of $package" # validate
    else
-      echo -E "$package is alreaddy installed ... $Y SKIPPING $N"
+      echo -e "$package is alreaddy installed ... $Y SKIPPING $N"
       fi
    done
 
